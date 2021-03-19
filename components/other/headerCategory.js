@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native'
 import React from 'react';
 import { Image, Text, View } from 'react-native';
 
-// const iconUrl = require('../../assets/img/main/category/beauty.png')
-
 export const HeaderCategory = props => {
   return (
     <View style={styles.container}>
@@ -11,10 +9,6 @@ export const HeaderCategory = props => {
         <Text style={styles.title}>{props.title}</Text>
         <Text style={styles.subtitle}>{props.subtitle}</Text>
       </View>
-      <Image 
-         style={styles.icon}
-         source={props.iconUrl}
-      />
     </View>
   );
 }
@@ -22,7 +16,7 @@ export const HeaderCategory = props => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: 120,
@@ -33,11 +27,13 @@ const styles = StyleSheet.create({
   }, 
   title: {
     color: 'white',
+    textAlign: 'center',
     fontSize: 22,
     marginBottom: 5,
   },
   subtitle: {
     color: 'white',
+    textAlign: 'center',
   },
   icon:{
     marginRight: 10,

@@ -28,20 +28,20 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    height: 50,
+    height: 60,
   },
   backBtn: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(50,50,50, 0.4)',
-    marginLeft: 10,
-    borderRadius: 15,
-    width: 70,
+    marginLeft: 15,
+    borderRadius: 30,
+    width: 50,
     height: '80%',
   },
   backIcon: {
-    width: 18,
-    height: 18,
+    width: 15,
+    height: 15,
   }
 })
 

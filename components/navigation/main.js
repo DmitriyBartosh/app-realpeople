@@ -60,7 +60,7 @@ const style = StyleSheet.create({
     color: 'white',
   },
   realLogo: {
-    marginTop: 5,
+    marginTop: 10,
     height: 26,
     width: 50,
   }
