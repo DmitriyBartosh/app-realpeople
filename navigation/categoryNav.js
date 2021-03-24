@@ -16,6 +16,14 @@ import Motion from "../screens/category/Motion"
 import Makeup from "../screens/service/Beauty/Makeup"
 import Eyebrow from "../screens/service/Beauty/Eyebrow"
 import Manicure from "../screens/service/Beauty/Manicure"
+
+import Catering from "../screens/service/Eat/Catering"
+import Dessert from "../screens/service/Eat/Dessert"
+
+import Dj from "../screens/service/Holidays/Dj"
+import Events from "../screens/service/Holidays/Events"
+import Gift from "../screens/service/Holidays/Gift"
+import Photo from "../screens/service/Holidays/Photo"
  
 const { Navigator, Screen } = createStackNavigator();
 
@@ -158,6 +166,66 @@ const MainNavigator = () => (
     <Screen 
     name="Manicure" 
     component={Manicure}
+    options={{
+      transitionSpec: {
+        open: configOpen,
+        close: configClose,
+      }
+    }}
+    />
+    <Screen 
+    name="Catering" 
+    component={Catering}
+    options={{
+      transitionSpec: {
+        open: configOpen,
+        close: configClose,
+      }
+    }}
+    />
+    <Screen 
+    name="Dessert" 
+    component={Dessert}
+    options={{
+      transitionSpec: {
+        open: configOpen,
+        close: configClose,
+      }
+    }}
+    />
+    <Screen 
+    name="Dj" 
+    component={Dj}
+    options={{
+      transitionSpec: {
+        open: configOpen,
+        close: configClose,
+      }
+    }}
+    />
+    <Screen 
+    name="Events" 
+    component={Events}
+    options={{
+      transitionSpec: {
+        open: configOpen,
+        close: configClose,
+      }
+    }}
+    />
+    <Screen 
+    name="Photo" 
+    component={Photo}
+    options={{
+      transitionSpec: {
+        open: configOpen,
+        close: configClose,
+      }
+    }}
+    />
+    <Screen 
+    name="Gift" 
+    component={Gift}
     options={{
       transitionSpec: {
         open: configOpen,

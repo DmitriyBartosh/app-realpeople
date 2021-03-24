@@ -10,7 +10,7 @@ import NavCategory from '../../../components/navigation/service'
 
 import Details from '../../../components/service/serviceDetail'
 
-const headerImg = require('../../../assets/img/beauty/freelance/makeup/background.jpg')
+const headerImg = require('../../../assets/img/beauty/service/makeup/background.webp')
 
 function MainScreen({ navigation }) {
   return (
@@ -45,7 +45,7 @@ const ServiceScreen = () => (
       return {
         gestureDirection: true,
         cardOverlayEnabled: true,
-        ...TransitionPresets.FadeFromBottomAndroid,
+        ...TransitionPresets.SlideFromRightIOS,
       }
     }}
     >
@@ -63,13 +63,6 @@ const ServiceScreen = () => (
     name="Details" 
     component={Details} 
     options={navigation => ({
-      cardStyleInterpolator: ({current: {progress}}) => {
-        return { 
-          cardStyle: {
-            opacity: progress
-          }
-        }
-      },
       transitionSpec: {
         open: configOpen,
         close: configClose,

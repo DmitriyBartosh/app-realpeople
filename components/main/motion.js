@@ -10,6 +10,7 @@ export const Motion = props => {
   return (
         <TouchableHighlight onPress={() => navigation.push('Motion')}>
           <View style={[style.container, style.colorMotion]}>
+          <View style={style.noActive} />
             <ImageBackground source={backImg} style={style.motion} />
             <View style={style.containerTitle}>
               <Text style={style.title} >{props.title}</Text>

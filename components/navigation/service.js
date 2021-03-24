@@ -1,6 +1,9 @@
 import React from 'react'
 import { useNavigation  } from '@react-navigation/native';
-import { View, StyleSheet, TouchableWithoutFeedback, Text, Image } from 'react-native'
+import { View, StyleSheet, TouchableWithoutFeedback, Text, Image, Dimensions } from 'react-native'
+
+const WIDTH = Dimensions.get('window').width;
+const HEIGHT = Dimensions.get('window').height;
 
 export const mainNav = (props) => {
   const navigation = useNavigation(); 
@@ -47,7 +50,7 @@ const style = StyleSheet.create({
     zIndex: 10,
   },
   backBtn: {
-    width: '30%',
+    width: WIDTH * 0.2,
     paddingLeft: 30,
     alignItems: 'flex-start',
   },
@@ -56,7 +59,7 @@ const style = StyleSheet.create({
     height: 15,
   },
   category:{
-    width: '40%',
+    width: WIDTH * 0.5,
     alignItems: 'center',
   },
   categoryText: {
@@ -64,7 +67,7 @@ const style = StyleSheet.create({
     textAlign: 'center',
   },
   buttonReal:{
-    width: '30%',
+    width: WIDTH * 0.2,
     paddingRight: 20,
     alignItems: 'flex-end',
   },

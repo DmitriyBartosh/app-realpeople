@@ -9,6 +9,9 @@ export const Fastfood = props => {
   return (
         <TouchableHighlight>
           <View style={[styleContainer.containerLong, style.colorFastfood]}>
+
+            <View style={styleContainer.noActive} />
+            
             <ImageBackground source={backImg} style={style.fastfood} />
             <View style={styleContainer.containerTitle}>
               <Text style={styleContainer.title} >{props.title}</Text>

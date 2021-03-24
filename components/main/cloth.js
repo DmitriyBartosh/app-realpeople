@@ -10,6 +10,7 @@ export const Cloth = props => {
   return (
         <TouchableHighlight onPress={() => navigation.push('Cloth')}>
           <View style={[style.container, style.colorCloth]}>
+          <View style={style.noActive} />
             <ImageBackground source={backImg} style={style.cloth} />
             <View style={style.containerTitle}>
               <Text style={style.title} >{props.title}</Text>

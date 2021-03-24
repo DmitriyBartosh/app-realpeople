@@ -9,6 +9,7 @@ export const Artists = props => {
   return (
         <TouchableHighlight>
           <View style={[styleContainer.containerLong, style.colorArtists]}>
+          <View style={styleContainer.noActive} />
             <ImageBackground source={backImg} style={style.artists} />
             <View style={styleContainer.containerTitle}>
               <Text style={styleContainer.title} >{props.title}</Text>

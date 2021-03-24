@@ -10,6 +10,7 @@ export const Auto = props => {
   return (
         <TouchableHighlight onPress={() => navigation.push('Auto')}>
           <View style={[style.container, style.colorAuto]}>
+          <View style={style.noActive} />
             <ImageBackground source={backImg} style={style.auto} />
             <View style={style.containerTitle}>
               <Text style={style.title} >{props.title}</Text>

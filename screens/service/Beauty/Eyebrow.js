@@ -10,7 +10,7 @@ import NavCategory from '../../../components/navigation/service'
 
 import Details from '../../../components/service/serviceDetail'
 
-const headerImg = require('../../../assets/img/beauty/freelance/eyebrow/background.webp')
+const headerImg = require('../../../assets/img/beauty/service/eyebrow/background.webp')
 
 function MainScreen({ navigation }) {
   return (

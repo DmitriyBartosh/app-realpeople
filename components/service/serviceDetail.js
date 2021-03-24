@@ -1,18 +1,23 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, FlatList, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import Nav from '../../components/navigation/category'
+import Contact from './contact'
+import Gallery from './gallery'
+import Price from './price'
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
+const Tab = createBottomTabNavigator();
 
-
-const serviceDetail = ({navigation, route}) => {
+const serviceDetail = ({navigation, route, props}) => {
   const {item} = route.params;
   return (
     <View style={styles.container}>
+    <TouchableWithoutFeedback onPress={() => {navigation.navigate('MainScreen')}}>
       <View style={styles.containerHeader}>
 
         <View style={styles.avatarContainer}>
@@ -26,27 +31,46 @@ const serviceDetail = ({navigation, route}) => {
           <Text style={styles.desc}>{item.description}</Text>
         </View>
 
+        <View>
+          <Ionicons style={styles.closeIcon} name='close' size={25}/>
+        </View>
       </View>
+    </TouchableWithoutFeedback>
 
-      <View style={styles.containerContact}>
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
 
-      </View>
+            if (route.name === 'Story') {
+              iconName = focused ? 'image' : 'image-outline'
+            }
+            else if (route.name === 'Contact') {
+              iconName = focused ? 'link' : 'link-outline';
+            }
+            else if (route.name === 'Price') {
+              iconName = focused ? 'pricetags' : 'pricetags-outline';
+            }
 
-      <View style={styles.containerGallery}>
-      <FlatList 
-        data={item.story}
-        numColumns={2}
-        renderItem={item => item.key}
-        renderItem={({item}) => {
-          return <View>
-            <Image
-             source={item.url} 
-             style={styles.galleryImg}/>
-          </View>
+            return <Ionicons name={iconName} size={size} color={color} />;
+          }
+        })}
+        backBehavior='initialRoute'
+        tabBarOptions={{
+          activeTintColor: 'rgb(255,228,228)',
+          inactiveTintColor: 'rgba(255,228,228, 0.5)',
+          showLabel: false,
+          style: {backgroundColor: 'transparent', height: 50, width: WIDTH},
+          inactiveBackgroundColor: 'transparent',
+          activeBackgroundColor: 'rgba(202,73,253, 0.5)',
+          tabStyle: { borderRadius: 10, margin: 8}
         }}
-      />
-    </View>
-    <Nav/>
+      >
+        <Tab.Screen name="Story" children={() => <Gallery data={item.story}/>}/>
+        <Tab.Screen name="Contact" children={() => <Contact data={item.links}/>}/>
+        <Tab.Screen name="Price" children={() => <Price data={item.price}/>}/>
+      </Tab.Navigator>
+
     </View>
   );
 }
@@ -59,41 +83,47 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 76,
-    paddingLeft: 20,
-    paddingRight: 20,
-    marginTop: 30,
+    height: 70,
+    width: WIDTH - 20,
+    marginRight: 10,
+    marginLeft: 10,
+    borderRadius: 15,
+    borderTopLeftRadius: 45,
+    borderBottomLeftRadius: 45,
+    marginBottom: 15,
+    marginTop: 15,
+  },
+  avatarContainer: {
+    width: 70,
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 25,
   },
   avatarBorder:{
     position: 'absolute',
-    top: 0,
-    left: 0,
     width: 70,
     height: 70,
     borderRadius: 35,
   },
   avatarHidden: {
     position: 'absolute',
-    top: 1,
-    left: 1,
     height: 68,
     width: 68,
     backgroundColor: 'black',
-    borderRadius: 33,
+    borderRadius: 34,
   },
   avatar:{
-    height: 64,
-    width: 64,
-    top: 3,
-    left: 3,
-    borderRadius: 40,
+    position: 'absolute',
+    height: 66,
+    width: 66,
+    borderRadius: 33,
     marginRight: 25,
     zIndex: 10,
   },
   info: {
     flex: 1,
     paddingRight: 20,
-    paddingTop: 10,
   },
   name: {
     color: 'white',
@@ -105,33 +135,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     opacity: 0.75,
   },
-  infoContainer: {
-    flex: 1,
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-  },
-  containerGallery: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    margin: 5,
-  },
-  galleryImg: {
-    width: (WIDTH * 0.50) - 10,
-    margin: 5,
-    height: HEIGHT * 0.32,
-    borderRadius: 5,
-    resizeMode: 'cover',
-  },
+  closeIcon: {
+    color: 'white',
+    marginRight: 15,
+  }
 })
-
-serviceDetail.sharedElements = (route, otherRoute, showing) => {
-  const {item} = route.params;
-  return [
-    {id: `item.${item.id}.avatar`},
-    {id: `item.${item.id}.info`, animation: 'fade'},
-  ]
-};
 
 export default serviceDetail;

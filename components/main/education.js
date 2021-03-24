@@ -10,6 +10,7 @@ export const Education = props => {
   return (
         <TouchableHighlight onPress={() => navigation.push('Education')}>
           <View style={[style.containerLong, style.colorEducation]}>
+          <View style={style.noActive} />
             <ImageBackground source={backImg} style={style.education} />
             <View style={style.containerTitle}>
               <Text style={style.title} >{props.title}</Text>

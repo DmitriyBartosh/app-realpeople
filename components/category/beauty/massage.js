@@ -9,6 +9,9 @@ export const Massage = props => {
   return (
         <TouchableHighlight>
           <View style={[styleContainer.container, style.colorMassage]}>
+            
+            <View style={styleContainer.noActive} />
+
             <ImageBackground source={backImg} style={style.massage} />
             <View style={styleContainer.containerTitle}>
               <Text style={styleContainer.title} >{props.title}</Text>
